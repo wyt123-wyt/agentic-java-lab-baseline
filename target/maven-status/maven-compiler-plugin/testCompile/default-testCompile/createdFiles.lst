@@ -1,0 +1,4 @@
+edu\hbuas\library\acceptance\InventoryAcceptanceTest.class
+edu\hbuas\library\acceptance\FeeCalculatorAcceptanceTest.class
+edu\hbuas\library\acceptance\FeeCalculatorPropertyTest.class
+edu\hbuas\library\acceptance\FeeCalculatorPropertyTest$Input.class

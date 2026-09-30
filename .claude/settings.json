@@ -1,0 +1,57 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mvn -q test-compile:*)",
+      "Bash(mvn -q test:*)",
+      "Bash(mvn -q verify:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)"
+    ],
+    "deny": [
+      "Edit(./SPEC.md)",
+      "Edit(./CLAUDE.md)",
+      "Edit(./pom.xml)",
+      "Edit(./ACCEPTANCE.sha256)",
+      "Edit(./src/test/java/**/acceptance/**)",
+      "Edit(./.claude/**)",
+      "Edit(./drill/**)",
+      "Bash(git push:*)",
+      "Bash(git commit:*)",
+      "Bash(rm -rf:*)",
+      "Bash(curl:*)",
+      "Bash(wget:*)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit|NotebookEdit",
+        "hooks": [
+          { "type": "command", "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/protect-files.sh\"" }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          { "type": "command", "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/guard-bash.sh\"" }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          { "type": "command", "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/post-edit-compile.sh\"", "timeout": 180 }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          { "type": "command", "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/stop-verify.sh\"", "timeout": 600 }
+        ]
+      }
+    ]
+  }
+}

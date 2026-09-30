@@ -1,0 +1,4 @@
+51824f1facfa513cfd55dd5251b3ec58f38a08f4753761097e6f4abbf7a35b2c  SPEC.md
+46258fbedd54af70809c3083129891c557cdeeb5573aae1c789f58d79085fbed  src/test/java/edu/hbuas/library/acceptance/FeeCalculatorAcceptanceTest.java
+25f23578493862c48028e69f09b7f32e10f8b34885f72abc0a38eaf35c535f3e  src/test/java/edu/hbuas/library/acceptance/FeeCalculatorPropertyTest.java
+5ebbeba3bd54e7f851700bfb38d694aa54774d5fab06d7efcca162d0bb086379  src/test/java/edu/hbuas/library/acceptance/InventoryAcceptanceTest.java
